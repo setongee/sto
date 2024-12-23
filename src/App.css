@@ -1,0 +1,49 @@
+.headpart{
+    width: 100%;
+    z-index: 99;
+    top: 0;
+}
+
+.pageTitle{
+
+    font-size: 40px;
+    font-weight: 600;
+    width: 700px;
+    text-align: center;
+    margin: 70px auto;
+    margin-top: 50px;
+    text-decoration: underline;
+
+}
+
+.empty__tray__page{
+
+    height: 100vh !important;
+
+}
+
+@media(max-width : 1200px){
+
+    .pageTitle{
+        font-size: 35px;
+    }
+
+}
+
+@media(max-width : 768px){
+
+    .pageTitle{
+        width: 100%;
+    }
+
+}
+
+@media(max-width : 500px){
+
+    .pageTitle{
+        width: 100%;
+        font-size: 26px;
+        margin-bottom: 50px;
+    }
+
+}

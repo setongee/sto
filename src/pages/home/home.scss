@@ -1,0 +1,267 @@
+.home{
+
+    .landing__area{
+        height: 600px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+
+        .text__part{
+
+            width: 700px;
+
+            span{
+                font-weight: 500;
+                color: #000;
+            }
+
+            h1{
+                font-size: 60px;
+                line-height: 70px;
+                margin-top: 30px;
+                letter-spacing: -.5px;
+                // color: #1c3f3a;
+                text-decoration: underline;
+            }
+
+            p{
+                margin-top: 90px;
+                margin-bottom: 40px;
+                width: 70%;
+                line-height: 28px;
+                font-size: 17px;
+                color: #555;
+            }
+        }
+
+        .stoPic{
+            width: 45%;
+            overflow: hidden;
+            
+            img{
+                width: 100%;
+            }
+        }
+    }
+
+    .fin__statements{
+
+        border-top: 1px solid #e8e8e8;
+        margin-top: 70px;
+        padding-top: 50px;
+
+        .heading{
+            font-size: 21px;
+            font-weight: 600;
+            color: #1c3f3a;
+        }
+
+        .fin__downloads{
+
+            gap: 20px;
+            overflow-x: auto;
+            margin-top: 50px;
+            scrollbar-width: none;
+
+            .fin{
+                width: 304px;
+                height: 406px;
+                overflow: hidden;
+                flex-shrink: 0;
+
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+        }
+        
+    }
+
+    .news-flat{
+
+        margin-top: 50px;
+        
+    }
+
+}
+
+@media(max-width : 1200px) {
+
+    .home{
+
+        .landing__area{
+
+            align-items: center;
+
+            .text__part{
+
+                width: 600px;
+
+                h1{
+                    font-size: 50px;
+                    line-height: 63px;
+                }
+
+                p{
+                    margin: 40px 0;
+                    width: 80%;
+                    font-size: 15px;
+                    line-height: 25px;
+                }
+
+            }
+        }
+
+    }
+
+}
+
+@media(max-width : 950px) {
+
+    .home{
+
+        .landing__area{
+
+            align-items: center;
+            height: 100%;
+            margin-top: 50px;
+
+            .text__part{
+
+                width: 600px;
+
+                h1{
+                    font-size: 50px;
+                    line-height: 63px;
+                }
+
+                p{
+                    margin: 40px 0;
+                    width: 80%;
+                    font-size: 15px;
+                    line-height: 25px;
+                }
+
+            }
+
+            .stoPic{
+                display: none;
+            }
+        }
+
+        .fin__statements{
+            margin-top: 50px;
+        }
+
+    }
+
+}
+
+@media(max-width : 600px) {
+
+    .home{
+
+        .landing__area{
+
+            align-items: center;
+            height: 100%;
+            margin-top: 20px;
+            flex-direction: column;
+            gap: 50px;
+
+            .text__part{
+
+                width: 100%;
+
+                .sto{
+                    display: none;
+                }
+
+                h1{
+                    font-size: 40px;
+                    line-height: 53px;
+                }
+
+                p{
+                    margin: 40px 0;
+                    width: 80%;
+                    font-size: 15px;
+                    line-height: 25px;
+                }
+
+            }
+
+            .stoPic{
+                display: block;
+                width: 100%;
+            }
+        }
+
+        .fin__statements{
+            margin-top: 50px;
+        }
+
+    }
+
+}
+
+@media(max-width : 500px) {
+
+    .home{
+
+        .landing__area{
+
+            align-items: center;
+            height: 100%;
+            margin-top: 20px;
+            flex-direction: column;
+            gap: 50px;
+
+            .text__part{
+
+                width: 100%;
+
+                .sto{
+                    display: none;
+                }
+
+                h1{
+                    font-size: 35px;
+                    line-height: 47px;
+                }
+
+                p{
+                    margin: 30px 0;
+                    width: 100%;
+                    font-size: 15px;
+                    line-height: 25px;
+                }
+
+            }
+
+            .stoPic{
+                display: block;
+                width: 100%;
+            }
+        }
+
+        .fin__statements{
+            margin-top: 50px;
+            margin: 40px 0;
+            padding-top: 35px;
+
+            .heading{
+                font-size: 16px;
+            }
+
+            .fin__downloads{
+                margin-top: 30px;
+            }
+        }
+
+    }
+
+}

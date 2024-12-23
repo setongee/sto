@@ -1,0 +1,355 @@
+// flex components
+
+.flex{
+    display: flex;
+}
+
+.flex__column{
+    flex-direction: column;
+}
+
+.flex__align__center{
+    align-items: center;
+}
+
+.flex__justify__center{
+    justify-content: center;
+}
+
+.flex__justify__spaceBetween{
+    justify-content: space-between;
+}
+
+.flex__align__start{
+    align-items: flex-start;
+}
+
+.flex__combo__align__spacebtw{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.flex__wrap{
+    flex-wrap: wrap;
+}
+
+.gap__10{
+    gap: 10px;
+}
+
+.gap__15{
+    gap: 15px;
+}
+
+.gap__20{
+    gap: 20px;
+}
+
+.gap__25{
+    gap: 25px;
+}
+
+.gap__30{
+    gap: 30px;
+}
+
+.gap__40{
+    gap: 40px;
+}
+
+.gap__50{
+    gap: 50px;
+}
+
+// Image Components
+
+.image__logo{
+    width: 50px;
+    height: 50px;
+}
+
+.image__item{
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.imageXshift{
+    margin-left: -55px;
+}
+
+
+// Text Styles
+
+.dark {
+    color: #213547;
+}
+
+.light {
+    color: #ffffffde;
+}
+
+.text__trend{
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.font__11{
+    font-size: 11px;
+}
+
+.font__12{
+    font-size: 12px;
+}
+
+.font__13{
+    font-size: 13px;
+}
+
+.font__14{
+    font-size: 14px;
+}
+
+.font__16{
+    font-size: 16px;
+}
+
+.font__18{
+    font-size: 18px;
+}
+
+.font__21{
+    font-size: 21px;
+}
+
+.font__24{
+    font-size: 24px;
+}
+
+.font__26{
+    font-size: 26px;
+}
+
+.font__28{
+    font-size: 28px;
+}
+
+.font__32{
+    font-size:32px;
+}
+
+.font__10{
+    font-size:10px;
+}
+
+.letter__spacing__2{
+
+    letter-spacing: 2px;
+
+}
+
+.font__weight__500{
+    font-weight: 500;
+}
+
+.font__weight__600{
+    font-weight: 600;
+}
+
+// button
+.button__main{
+    background-color: #1c3f3a;
+    color: #fff;
+}
+
+.button__primary{
+    background-color: #108a00;
+    color: #fff;
+}
+
+.button__danger{
+    background-color: #E60026;
+    color: #fff;
+}
+
+.button__warning{
+
+    background-color: #fb8b24;
+    color: #fff;
+
+}
+
+// colors
+.transparent{
+    background-color: transparent;
+}
+
+.primary{
+    background-color: #f9f9f9;
+}
+
+.dark__bg {
+    background-color: #1b1b1b;
+}
+
+.light__bg {
+    background-color: #ffffffde;
+}
+
+.color__danger{
+    background-color: #E60026;
+    color: #fff;
+}
+
+.color__danger__text{
+    color: #E60026;
+}
+
+.light{
+    color: #fff;
+}
+
+.cream {
+
+    color: #f0ead2;
+}
+
+//positioning
+.fixed{
+    position: fixed;
+}
+
+.relative{
+    position: relative;
+}
+
+.absolute{
+    position: absolute;
+}
+
+.zUp{
+    position: relative;
+    z-index: 9;
+}
+
+.absolute_full_center{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
+
+// margins
+
+.margin__top__30{
+    margin-top: 30px;
+}
+
+.margin__bottom__30{
+    margin-bottom: 30px;
+}
+
+.margin__top__20{
+    margin-top: 20px;
+}
+
+.margin__bottom__20{
+    margin-bottom: 20px;
+}
+
+.margin__top__50{
+    margin-top: 50px;
+}
+
+.margin__top__70{
+    margin-top: 70px;
+}
+
+.margin__top__80{
+    margin-top: 80px;
+}
+
+.margin__top__90{
+    margin-top: 90px;
+}
+
+.margin__top__100{
+    margin-top: 100px;
+}
+
+//paddings
+.padding__top__50{
+    margin-top: 50px;
+}
+
+.padding__top__70{
+    margin-top: 70px;
+}
+
+.padding__top__80{
+    margin-top: 80px;
+}
+
+.padding__top__90{
+    margin-top: 90px;
+}
+
+.padding__top__100{
+    margin-top: 100px;
+}
+
+.padding__top__bottom_30{
+    padding: 30px 0;
+}
+
+.padding__top__bottom_20{
+    padding: 20px 0;
+}
+
+.padding__top__bottom_10{
+    padding: 10px 0;
+}
+
+.padding__top__bottom_15{
+    padding: 15px 0;
+}
+
+
+// sizes
+.fullpage{
+    height: 100vh;
+    width: 100%;
+}
+
+.full__width{
+    width: 100%;
+}
+
+.width__600{
+    width: 600px;
+}
+
+.width__700{
+    width: 700px;
+}
+
+// content styles
+.content__main__title{
+    font-size: 24px;
+}
+
+.content__subtitle{
+    line-height: 26px;
+    color: #555;
+}
+
+.width__short{
+    width: 80%;
+}
+
+.cursor__pointer{
+    cursor: pointer;
+}
