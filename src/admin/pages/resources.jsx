@@ -212,16 +212,14 @@ return (
 
           <div className="table__item item__header flex">
 
-            <div className="tr__item name--item"># Name</div>
-
-            <div className="tr__item" >Actions</div>
+            <div className="tr__item name--item"># Name</div> 
 
           </div>
 
           {
             data?.resources?.length ? data.resources.map( (res, index) => (
 
-              <div className="table__item flex">
+              <div className="table__item flex res__file">
 
                   <div className="tr__item name--item flex ofiicial__name">
 
@@ -233,12 +231,11 @@ return (
 
                     <p> {res.name} </p>
 
-                    <a href = {res.url} download target='_Blank' > Downlaod</a>
-
                   </div>
 
-                  <div className="tr__item flex act--item"> 
+                  <div className="tr__item flex act--item res__file__sub"> 
 
+                    <a href = {res.url} download target='_Blank' > Downlaod</a>
                     <div className="action" onClick={ () => deleteItem(index) }> <Trash/> </div> 
 
                   </div>
