@@ -10,6 +10,7 @@ import News_view from '../pages/news_events/news_view';
 import Connect from '../pages/connect/connect';
 import Finance from '../pages/financial_statement/Finance';
 import Resources from '../pages/resources/resources';
+import Authy from '../admin/authy';
 
   const router = createBrowserRouter([
     {
@@ -51,6 +52,19 @@ import Resources from '../pages/resources/resources';
             }
           ]
         },
+        {
+          path : "admin",
+          children : [
+            {
+              path : "",
+              element : <Authy/>
+            },
+            {
+              path : ":page",
+              element : <Authy/>
+            }
+          ]
+        }
       ]
     }
   ]);

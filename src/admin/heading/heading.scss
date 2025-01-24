@@ -1,0 +1,84 @@
+
+.headingAdmin{
+
+    background-color: #fff;
+    height: 85px;
+    display: flex;
+    align-items: center;
+    overflow: clip;
+    justify-content: space-between;
+    border-bottom: 1px solid #eee;
+    color: #000;
+
+    .brand{
+        align-items: center;
+        gap: 15px;
+        width: 260px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-size: 11px;
+        line-height: 16px;
+        font-weight: 500;
+    }
+}
+
+.logo__side{
+
+    width: 55px;
+    height: 55px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-shrink: 0;
+    
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+}
+
+.account{
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .namePin{
+
+        height: 46px;
+        width: 46px;
+        background-color: #1c3f3a;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        color: #fff;
+        font-size: 15px;
+
+    }
+
+    .namePinFull{
+
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        
+        .fullname{
+
+            font-weight: 500;
+        }
+
+        .roleArea{
+            text-transform: uppercase;
+            font-size: 11px;
+            font-weight: 500;
+            color: #1c3f3a;
+            letter-spacing: 2px;
+        }
+    }
+
+}

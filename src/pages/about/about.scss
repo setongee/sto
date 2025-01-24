@@ -167,20 +167,30 @@
 
             .body__list{
 
-                margin-top: 40px;
+                margin-top: 0px;
+
+                p{
+                    margin-bottom: 0px;
+                    font-size: 17px;
+                    line-height: 27px;
+                }
 
                 ol{
 
+                    font-size: 17px;
                     display: flex;
                     flex-direction: column;
                     gap: 15px;
-                    width: 80%;
-                    margin-left: 0px;
+                    line-height: 30px;
+                    padding: 50px 0;
+                    font-weight: 500;
 
                     li{
-                        list-style-type : none;
-                        line-height: 26px;
+
+                        list-style-type : decimal-leading-zero;
+
                     }
+
                 }
             }
 

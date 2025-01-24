@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
 import Container from '../../components/container/Container'
 import './about.scss'
 import ScrollSpy from "react-ui-scrollspy";
@@ -12,11 +12,53 @@ import dept from '../../assets/MDA/department.svg'
 import units from '../../assets/MDA/ministry.svg'
 
 //people
-
-
 import Footer from '../../components/footer/footerArea';
+import { getAdminData } from '../../api/core/admin';
+import { convertToTitleCase } from '../../middleware/middleware';
 
 export default function About() {
+
+const[data, setData] = useState({})
+const [agency, setAgency] = useState({});
+
+useEffect(() => {
+
+    getAdminData("sto")
+    .then( res => {
+        setData(res[0]);
+        refixArr(res[0].agencies);
+        addContent(res[0]?.responsibilities);
+    } )
+
+}, []);  
+
+const refixArr = (q) => {
+
+    const newObj = {};
+
+    q.forEach(e => {
+        
+        if(!newObj[e.category]){
+
+            newObj[e.category] = { name : e.category, data : [] }
+
+        }
+
+        newObj[e.category].data.push(e)
+
+    });
+
+    setAgency(newObj);
+
+}
+
+const addContent = (response) => {
+    
+    const content = document.getElementById('content');
+    content.innerHTML = response;
+
+}
+
   return (
     <div className="about">
 
@@ -69,7 +111,7 @@ export default function About() {
 
                             <div className="headUp">Vision Statement</div>
 
-                            <p className='tube'>To be the best public sector financial service provider and a citadel for financial professionals. </p>
+                            <p className='tube'> { data?.vision } </p>
 
                         </div>
 
@@ -77,275 +119,53 @@ export default function About() {
 
                             <div className="headUp">Mission Statement</div>
 
-                            <p>To provide world class financial services to the stakeholders through IT driven processes with seasoned professionals working in a conducive environment. </p>
+                            <p> {data?.mission} </p>
 
                         </div>
 
                     </section>
 
                     <div id="agency">
+            
+                        {
+                            Object.entries(agency).map( (e, index) => (
 
-                        <div className="titlePin">
-                            Explore Agencies, Departments and Units in this Ministry
-                        </div>
+                                <section id={ e[0] === "department" ? "directorates" : e[0] } className = "multi" key = {index}>
 
-                        <section id="directorates" className = "multi" >
+                                    <h1> {e[0]} </h1>
 
-                            <h1>Departments</h1>
+                                    <div className="mda__card__ui flex gap__20">
 
-                            <div className="mda__card__ui flex gap__20">
+                                        {
+                                            e[1].data.map( (res, index) => (
 
-                                <div className="mda__card">
+                                                <div className="mda__card" key = {index}>
 
-                                    <div className="iconHolder">
+                                                    <div className="iconHolder">
 
-                                        <div className="card__photo">
-                                            <img src = {dept} />
-                                        </div>
+                                                        <div className="card__photo">
+                                                            <img src = {dept} />
+                                                        </div>
 
-                                    </div>
+                                                    </div>
 
-                                    <div className="card__content">
-                                        <p> Treasury Operations Directorate (TO) </p>
-                                        <span> <Cellar/> Departments</span>
-                                    </div>
+                                                    <div className="card__content">
 
-                                </div>
+                                                    <p>{res.name}</p>
+                                                    <span> <Cellar/> {e[0]} </span>
+                                                        
+                                                    </div>
 
-                                <div className="mda__card">
-
-                                    <div className="iconHolder">
-
-                                        <div className="card__photo">
-                                            <img src = {dept} />
-                                        </div>
+                                                </div>
+                                            ) )
+                                        }
 
                                     </div>
 
-                                    <div className="card__content">
-                                    <p>Monitoring and Investigation Directorate (M&I)</p>
-                                    <span> <Cellar/> Directorates</span>
-                                    </div>
+                                </section>
 
-                                </div>
-
-                                <div className="mda__card">
-
-                                    <div className="iconHolder">
-
-                                        <div className="card__photo">
-                                            <img src = {dept} />
-                                        </div>
-
-                                    </div>
-
-                                    <div className="card__content">
-                                    <p> Financial Information System Directorate (FIS)</p>
-                                    <span> <Cellar/> Directorates</span>
-                                    </div>
-
-                                </div>
-
-                                <div className="mda__card">
-
-                                    <div className="iconHolder">
-
-                                        <div className="card__photo">
-                                            <img src = {dept} />
-                                        </div>
-
-                                    </div>
-
-                                    <div className="card__content">
-                                    <p>Financial Intelligence and Research Directorate (FIR)</p>
-                                    <span> <Cellar/> Directorates</span>
-                                    </div>
-
-                                </div>
-
-                                <div className="mda__card">
-
-                                    <div className="iconHolder">
-
-                                        <div className="card__photo">
-                                            <img src = {dept} />
-                                        </div>
-
-                                    </div>
-
-                                    <div className="card__content">
-                                    <p>Central Payroll and Data Validation Directorate (CPDVD)</p>
-                                    <span> <Cellar/> Directorates</span>
-                                    </div>
-
-                                </div>
-
-                                <div className="mda__card">
-
-                                    <div className="iconHolder">
-
-                                        <div className="card__photo">
-                                            <img src = {dept} />
-                                        </div>
-
-                                    </div>
-
-                                    <div className="card__content">
-                                    <p>Finance and Accounts Directorate (F&A)</p>
-                                    <span> <Cellar/> Directorates</span>
-                                    </div>
-
-                                </div>
-
-                                <div className="mda__card">
-
-                                    <div className="iconHolder">
-
-                                        <div className="card__photo">
-                                            <img src = {dept} />
-                                        </div>
-
-                                    </div>
-
-                                    <div className="card__content">
-                                    <p> Administration and Human Resources (A&HR) </p>
-                                    <span> <Cellar/> Directorates</span>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </section>
-
-                        <section id="units" className = "multi" >
-
-                            <h1>Units</h1>
-
-                            <div className="mda__card__ui flex gap__20">
-
-                                <div className="mda__card">
-
-                                    <div className="iconHolder">
-
-                                        <div className="card__photo">
-                                            <img src = {agency} />
-                                        </div>
-
-                                    </div>
-
-                                    <div className="card__content">
-                                    <p> Procurement Unit  </p>
-                                    <span> <City/> Units</span>
-                                    </div>
-
-                                </div>
-
-                                <div className="mda__card">
-
-                                    <div className="iconHolder">
-
-                                        <div className="card__photo">
-                                            <img src = {agency} />
-                                        </div>
-
-                                    </div>
-
-                                    <div className="card__content">
-                                    <p> Information and Communication Technology Unit (ICT)Unit </p>
-                                    <span> <City/> Units</span>
-                                    </div>
-
-                                </div>
-
-                                <div className="mda__card">
-
-                                    <div className="iconHolder">
-
-                                        <div className="card__photo">
-                                            <img src = {agency} />
-                                        </div>
-
-                                    </div>
-
-                                    <div className="card__content">
-                                    <p>  Budget and Planning Unit </p>
-                                    <span> <City/> Units</span>
-                                    </div>
-
-                                </div>
-
-                                <div className="mda__card">
-
-                                    <div className="iconHolder">
-
-                                        <div className="card__photo">
-                                            <img src = {agency} />
-                                        </div>
-
-                                    </div>
-
-                                    <div className="card__content">
-                                    <p> Reconciliation Unit </p>
-                                    <span> <City/> Units</span>
-                                    </div>
-
-                                </div>
-
-                                <div className="mda__card">
-
-                                    <div className="iconHolder">
-
-                                        <div className="card__photo">
-                                            <img src = {agency} />
-                                        </div>
-
-                                    </div>
-
-                                    <div className="card__content">
-                                    <p>Public Affairs Unit</p>
-                                    <span> <City/> Units</span>
-                                    </div>
-
-                                </div>
-
-                                <div className="mda__card">
-
-                                    <div className="iconHolder">
-
-                                        <div className="card__photo">
-                                            <img src = {agency} />
-                                        </div>
-
-                                    </div>
-
-                                    <div className="card__content">
-                                    <p>Internal Audit Unit</p>
-                                    <span> <City/> Units</span>
-                                    </div>
-
-                                </div>
-
-                                <div className="mda__card">
-
-                                    <div className="iconHolder">
-
-                                        <div className="card__photo">
-                                            <img src = {agency} />
-                                        </div>
-
-                                    </div>
-
-                                    <div className="card__content">
-                                    <p> Projects’ Financial Management Unit </p>
-                                    <span> <City/> Units</span>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </section>
+                            ) )
+                        }
                         
                     </div>
 
@@ -357,23 +177,11 @@ export default function About() {
 
                         <div className="resp__body">
 
-                            <div className="summary">The Statutory responsibilities of the State Treasury Office as stated in the Public Finance Management Law 2011 include the following major services amongst others : </div>
-
-                            <div className="body__list">
-
-                                <ol>
-                                    <li>Accounting for all receipts and payments of the State Government.</li>
-                                    <li>Supervising the accounts of the State Ministries, Extra-Ministerial  Departments and Agencies (MDAs);</li>
-                                    <li>Maintaining and operating the accounts of the Consolidated Revenue Fund, Capital Development Fund and other Public Funds and providing cash backing for the operations of the State Government;</li>
-                                    <li>Collating and preparing statutory Financial Statements of the State Government and any other Statement of Accounts as may be required from time to time;</li>
-                                    <li>Maintaining and operating the State Government’s Accounts;</li>
-                                    <li>Conducting routine and in-depth inspection of the books of accounts of the State’s Ministries, Department and Agencies to ensure compliance with rules, regulations, policy decisions and maintenance of account codes;</li>
-                                    <li>Formulating and implementing the accounting policies of the State Government.</li>
-                                </ol>
-
-                            </div>
+                            <div className="body__list" id='content'></div>
 
                         </div>
+
+                        
 
                     </div>
 
@@ -387,123 +195,24 @@ export default function About() {
 
                             <section>
 
-                                <a href='#' className="pic">
+                                {
+                                    data.people?.length ? data.people.map( (res, index) => (
 
-                                    <div className="pic__holder">
-                                        <img src="https://sto.lagosstate.gov.ng/wp-content/uploads/sites/228/2023/11/avv.jpg" alt="" />
-                                    </div>
+                                        <a className="pic" key = {index} >
 
-                                    <div className="name__card">
-                                        <span>Permanent Secretary/Accountant-General</span>
-                                        <p>Dr. Abiodun Shefiu Muritala</p>
-                                    </div>
+                                            <div className="pic__holder">
+                                                <img src={res.photo} alt= { `${res.name}_${res.role}` } />
+                                            </div>
 
-                                </a>
+                                            <div className="name__card">
+                                                <span> {res.role} </span>
+                                                <p> { convertToTitleCase( res.name ) } </p>
+                                            </div>
 
-                                <a href='#' className="pic">
+                                        </a>
 
-                                    <div className="pic__holder">
-                                        <img src="https://sto.lagosstate.gov.ng/wp-content/uploads/sites/228/2023/09/tifas.jpg" alt="" />
-                                    </div>
-
-                                    <div className="name__card">
-                                        <span>Director, Centralized Payroll& Data Validation
-                                        </span>
-                                        <p>Mrs. Tifase Iyabo Olayinka</p>
-                                    </div>
-
-                                </a>
-
-                                <a href='#' className="pic">
-
-                                    <div className="pic__holder">
-                                        <img src="https://sto.lagosstate.gov.ng/wp-content/uploads/sites/228/2023/09/pfm.jpg" alt="" />
-                                    </div>
-
-                                    <div className="name__card">
-                                        <span>Director, Project Financial Management Unit</span>
-                                        <p>Mrs. Saidi Rasheedat A.</p>
-                                    </div>
-
-                                </a>
-
-                                <a href='#' className="pic">
-
-                                    <div className="pic__holder">
-                                        <img src="https://sto.lagosstate.gov.ng/wp-content/uploads/sites/228/2023/09/shobo.jpg" alt="" />
-                                    </div>
-
-                                    <div className="name__card">
-                                        <span>Director, Admin. & Human Resource Department</span>
-                                        <p>Ms.Shobowale Adedoyin Sekinot</p>
-                                    </div>
-
-                                </a>
-
-                                <a href='#' className="pic">
-
-                                    <div className="pic__holder">
-                                        <img src="https://sto.lagosstate.gov.ng/wp-content/uploads/sites/228/2023/09/Stoh.jpg" alt="" />
-                                    </div>
-
-                                    <div className="name__card">
-                                        <span>DIRECTOR, FINANCIAL INFORMATION SYSTEM</span>
-                                        <p>MR. Thomas Folorunsho Olatunji</p>
-                                    </div>
-
-                                </a>
-
-                                <a href='#' className="pic">
-
-                                    <div className="pic__holder">
-                                        <img src="https://sto.lagosstate.gov.ng/wp-content/uploads/sites/228/2017/02/Capture.png" alt="" />
-                                    </div>
-
-                                    <div className="name__card">
-                                        <span>DIRECTOR, MONITORING & INVESTIGATION DIRECTORATE</span>
-                                        <p>MR. Mahmud Tajudeen Alao</p>
-                                    </div>
-
-                                </a>
-
-                                <a href='#' className="pic">
-
-                                    <div className="pic__holder">
-                                        <img src="https://sto.lagosstate.gov.ng/wp-content/uploads/sites/228/2023/09/kara.jpg" alt="" />
-                                    </div>
-
-                                    <div className="name__card">
-                                        <span>Director, Finance and Accounts</span>
-                                        <p>Kara Oluseun Olumayowa</p>
-                                    </div>
-
-                                </a>
-
-                                <a href='#' className="pic">
-
-                                    <div className="pic__holder">
-                                        <img src="https://sto.lagosstate.gov.ng/wp-content/uploads/sites/228/2023/09/dina.jpg" alt="" />
-                                    </div>
-
-                                    <div className="name__card">
-                                        <span>Director ,Treasury Operations</span>
-                                        <p>Mrs. Abisola Ameenat Dina</p>
-                                    </div>
-
-                                </a>
-
-                                <a href='#' className="pic">
-
-                                    <div className="pic__holder">
-                                        <img src="https://sto.lagosstate.gov.ng/wp-content/uploads/sites/228/2023/09/frt.jpg" alt="" />
-                                    </div>
-
-                                    <div className="name__card">
-                                        <span>Director, Financial Intelligence and Research</span>
-                                        <p>Mr. Viavo Oladipupo Amosu</p>
-                                    </div>
-
-                                </a>
+                                    ) ) : null
+                                }
 
                             </section>
 
