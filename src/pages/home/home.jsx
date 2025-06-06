@@ -6,6 +6,7 @@ import stat from '../../assets/landing/stats.png'
 
 // fins
 
+import fin6 from '../../assets/fin/6.png'
 import fin1 from '../../assets/fin/1.png'
 import fin2 from '../../assets/fin/2.png'
 import fin3 from '../../assets/sto/fin_2021.png'
@@ -48,6 +49,10 @@ export default function Home() {
                 <div className="heading"> Lagos' Financial Statements</div>
 
                 <div className="fin__downloads flex">
+
+                    <a href="https://firebasestorage.googleapis.com/v0/b/lasg-a9f5c.appspot.com/o/uploads%2Fsto%2FY2024%20Lagos%20Audited%20Financial%20Statement?alt=media&token=4c7ebaff-29a6-4df6-b3b4-997ed6b8994d" target='_blank' download className="fin">
+                        <img src={fin6} alt="" />
+                    </a>
 
                     <a href={fin_2023} download className="fin">
                         <img src={fin1} alt="" />

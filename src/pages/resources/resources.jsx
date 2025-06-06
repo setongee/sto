@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import './resources.scss'
 import Container from '../../components/container/Container'
 import pdf from '../../assets/pdff.png'
@@ -17,8 +17,44 @@ import fin_2018 from '../../assets/pdf/Lagos_State_2018_Accountant-Generals-Repo
 import fin_2017 from '../../assets/pdf/Lagos_State_2017_Accountant-Generals-Report.pdf'
 import fin_2016 from '../../assets/pdf/Lagos_State_2016_Accountant-General39s-Report.pdf'
 import fin_2015 from '../../assets/pdf/Lagos_State_2015_Accountant-Generals-Report.pdf'
+import { getAdminData } from '../../api/core/admin'
+import { sortArray } from '../../middleware/middleware'
 
 export default function Resources() {
+
+    const[data, setData] = useState([])
+
+    useEffect(() => {
+    
+        getAdminData("sto")
+        .then( res => {
+            
+            sortArray(res[0].resources, "name")
+            .then(e => {
+                const response = e.toReversed();
+                setData(response)
+            })
+
+        } )
+
+        const sp = "Y2024 Finacial Planning"
+        const y = sp.split("")
+        console.log(y);
+        console.log(y[4]);
+    
+    }, []); 
+    
+    const convertDateUploaded = (name) => {
+
+        const ccName = name.split("");
+        const newArrayStr = [Number(ccName[1]), Number(ccName[2]), Number(ccName[3]), Number(ccName[4]) ];
+        const response = newArrayStr.join("");
+        
+        return response - 1
+
+    }
+        
+
   return (
 
     <div className="resources">
@@ -36,122 +72,30 @@ export default function Resources() {
                     <div className="doc__action">Action</div>
                 </div>
 
-                <a href = {fin_2023} download className="doc doc__body">
-                    <div className="doc__title flex gap__10">
-                        
-                        <div className="doc__icon"><img src={pdf} alt="" /></div>
-                        
-                        Y2023 Lagos Audited Financial Statement 
-                    
-                    </div>
-                    <div className="doc__category"> Financial Statements </div>
-                    <div className="doc__date"> 31st December 2023 </div>
-                    <div className="doc__action"> <div className="form__button flex"> <DownloadCircle/> Download </div> </div>
-                </a>
+                {
+                    data?.length ? (
 
-                <a href = {fin_2022} download className="doc doc__body">
-                    <div className="doc__title flex gap__10">
-                        
-                        <div className="doc__icon"><img src={pdf} alt="" /></div>
-                        
-                        Y2022 Lagos Audited Financial Statement 
-                    
-                    </div>
-                    <div className="doc__category"> Financial Statements </div>
-                    <div className="doc__date"> 31st December 2022 </div>
-                    <div className="doc__action"> <div className="form__button flex"> <DownloadCircle/> Download </div> </div>
-                </a>
+                        data?.map( item => (
 
-                <a href = {fin_2021} download className="doc doc__body">
-                    <div className="doc__title flex gap__10">
-                        
-                        <div className="doc__icon"><img src={pdf} alt="" /></div>
-                        
-                        Y2021 Lagos Audited Financial Statement 
-                    
-                    </div>
-                    <div className="doc__category"> Financial Statements </div>
-                    <div className="doc__date"> 31st December 2021 </div>
-                    <div className="doc__action"> <div className="form__button flex"> <DownloadCircle/> Download </div> </div>
-                </a>
+                            <a key = {item.name} href = {item.url} target = "_blank" download className="doc doc__body">
 
-                <a href = {fin_2020} download className="doc doc__body">
-                    <div className="doc__title flex gap__10">
-                        
-                        <div className="doc__icon"><img src={pdf} alt="" /></div>
-                        
-                        Y2020 Lagos Audited Financial Statement 
-                    
-                    </div>
-                    <div className="doc__category"> Financial Statements </div>
-                    <div className="doc__date"> 31st December 2020 </div>
-                    <div className="doc__action"> <div className="form__button flex"> <DownloadCircle/> Download </div> </div>
-                </a>
+                                <div className="doc__title flex gap__10">
+                                    
+                                    <div className="doc__icon"><img src={pdf} alt="" /></div>
+                                    
+                                    {item.name}
+                                
+                                </div>
+                                <div className="doc__category"> Financial Statements </div>
+                                <div className="doc__date"> 31st December { convertDateUploaded(item.name) }  </div>
+                                <div className="doc__action"> <div className="form__button flex"> <DownloadCircle/> Download </div> </div>
+                                
+                            </a>
 
-                <a href = {fin_2019} download className="doc doc__body">
-                    <div className="doc__title flex gap__10">
-                        
-                        <div className="doc__icon"><img src={pdf} alt="" /></div>
-                        
-                        Y2019 Lagos Audited Financial Statement 
-                    
-                    </div>
-                    <div className="doc__category"> Financial Statements </div>
-                    <div className="doc__date"> 31st December 2019 </div>
-                    <div className="doc__action"> <div className="form__button flex"> <DownloadCircle/> Download </div> </div>
-                </a>
+                        ) )
 
-                <a href = {fin_2018} download className="doc doc__body">
-                    <div className="doc__title flex gap__10">
-                        
-                        <div className="doc__icon"><img src={pdf} alt="" /></div>
-                        
-                        Y2018 Lagos Audited Financial Statement 
-                    
-                    </div>
-                    <div className="doc__category"> Financial Statements </div>
-                    <div className="doc__date"> 31st December 2018 </div>
-                    <div className="doc__action"> <div className="form__button flex"> <DownloadCircle/> Download </div> </div>
-                </a>
-
-                <a href = {fin_2017} download className="doc doc__body">
-                    <div className="doc__title flex gap__10">
-                        
-                        <div className="doc__icon"><img src={pdf} alt="" /></div>
-                        
-                        Y2017 Lagos Audited Financial Statement 
-                    
-                    </div>
-                    <div className="doc__category"> Financial Statements </div>
-                    <div className="doc__date"> 31st December 2017 </div>
-                    <div className="doc__action"> <div className="form__button flex"> <DownloadCircle/> Download </div> </div>
-                </a>
-
-                <a href = {fin_2016} download className="doc doc__body">
-                    <div className="doc__title flex gap__10">
-                        
-                        <div className="doc__icon"><img src={pdf} alt="" /></div>
-                        
-                        Y2016 Lagos Audited Financial Statement 
-                    
-                    </div>
-                    <div className="doc__category"> Financial Statements </div>
-                    <div className="doc__date"> 31st December 2016 </div>
-                    <div className="doc__action"> <div className="form__button flex"> <DownloadCircle/> Download </div> </div>
-                </a>
-
-                <a href = {fin_2015} download className="doc doc__body">
-                    <div className="doc__title flex gap__10">
-                        
-                        <div className="doc__icon"><img src={pdf} alt="" /></div>
-                        
-                        Y2015 Lagos Audited Financial Statement 
-                    
-                    </div>
-                    <div className="doc__category"> Financial Statements </div>
-                    <div className="doc__date"> 31st December 2015 </div>
-                    <div className="doc__action"> <div className="form__button flex"> <DownloadCircle/> Download </div> </div>
-                </a>
+                    ) : null
+                }
                 
 
             </div>
